@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\AnalyticsReports": "src/"
+            "Spatie\\AnalyticsReports\\": "src/"
         }
     },
     "minimum-stability": "stable"
