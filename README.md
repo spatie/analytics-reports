@@ -45,7 +45,7 @@ This package also comes with a facade, which provides an easy way to call the th
 )
 ```
 
-Although the composer.json of this package specifies that XX AND xx must be pulled in as well, it sometimes fails to do so. If you encouter this problem as well include these lines in your composer.json as well:
+Although the composer.json of this package specifies that google/apiclient AND thujohn/analytics must be pulled in as well, it sometimes fails to do so. If you encouter this problem as well include these lines in your composer.json as well:
 ```js
 {
     "require": {
