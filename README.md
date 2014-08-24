@@ -87,7 +87,7 @@ Here is an example to retrieve visitors and pageview data for the last seven day
 $analyticsData = AnalyticsReports::getVisitorsAndPageViews(7)
 ```
 
-Here's another example that show how to get the most visited pages
+Here's another example to get the 20 most visited pages of the last 365 days
 ```php
 /*
 * $analyticsData now contains a Collection with 2 columns: "url" and "pageviews"
