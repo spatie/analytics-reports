@@ -32,7 +32,7 @@ You must install this service provider.
 ];
 ```
 
-GoogleSearch also comes with a facade, which provides an easy way to call the the class.
+This package also comes with a facade, which provides an easy way to call the the class.
 
 
 ```php
