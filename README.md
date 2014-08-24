@@ -98,7 +98,7 @@ $analyticsData = AnalyticsReports::getMostVisitedPages(365, 20)
 
 ###Visitors and Pageviews
 These methods return a Collection with columns "date", "vistors" and "pageViews". When grouping by yearMonth, the first column will be called "yearMonth".
-```
+```php
     /**
      * Get the amount of visitors and pageviews
      *
@@ -121,7 +121,7 @@ These methods return a Collection with columns "date", "vistors" and "pageViews"
 
 ###Keywords
 These methods return a Collection with columns "keyword" and "sessions".
-```
+```php
    /**
      * Get the top keywords
      *
@@ -144,7 +144,7 @@ These methods return a Collection with columns "keyword" and "sessions".
 
 ###Referrers
 These methods return a Collection with columns "url" and "pageViews".
-```
+```php
     /**
      * Get the top referrers
      *
@@ -169,8 +169,7 @@ These methods return a Collection with columns "url" and "pageViews".
 These methods return a Collection with columns "browser" and "sessions".
 
 If there are  more used browsers than the number specified in maxResults, then a new resultrow with browser-name "other" will be appended with a sum of all the remaining browsers.
-
-```
+```php
     /**
      * Get the top browsers
      *
@@ -193,7 +192,7 @@ If there are  more used browsers than the number specified in maxResults, then a
 
 ###Most visited pages
 These methods return a Collection with columns "url" and "pageViews".
-```
+```php
     /**
      * Get the most visited pages
      *
@@ -216,7 +215,7 @@ These methods return a Collection with columns "url" and "pageViews".
 
 ###All other Google Analytics Queries
 To perform all other GA queries use  ```performQuery```.  [Google's Core Reporting API](https://developers.google.com/analytics/devguides/reporting/core/v3/common-queries) provides more information on on which metrics and dimensions might be used. 
-```
+```php
     /**
      * Call the query method on the autenthicated client
      *
