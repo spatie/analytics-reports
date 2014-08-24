@@ -5,7 +5,6 @@ Retrieve data from Google Analytics
 
 This is an opinionated Laravel 4 package to retrieve Google Analytics data.
 
-Mostly all methods will return an `Illuminate\Support\Collection`-instance.
 
 
 ## Installation
@@ -76,7 +75,7 @@ Internally this package uses [thujohn/analytics-l4](https://github.com/thujohn/a
 ## Usage
 
 
-When the installation is done you can easily retrieve Analytics data
+When the installation is done you can easily retrieve Analytics data. Mostly all methods will return an `Illuminate\Support\Collection`-instance.
 
 
 Here is an example to retrieve visitors and pageview data for the last seven days.
