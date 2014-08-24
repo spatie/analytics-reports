@@ -89,7 +89,7 @@ $analyticsData = AnalyticsReports::getVisitorsAndPageViews(7)
 Here's another example to get the 20 most visited pages of the last 365 days
 ```php
 /*
-* $analyticsData now contains a Collection with 2 columns: "url" and "pageviews"
+* $analyticsData now contains a Collection with 2 columns: "url" and "pageViews"
 */
 $analyticsData = AnalyticsReports::getMostVisitedPages(365, 20)
 ```
@@ -228,7 +228,7 @@ To perform all other GA queries use  ```performQuery```.  [Google's Core Reporti
 ```    
 
 ##Convenience methods
-```getSiteIdByUrl```can be used to get the site id for the given url
+```getSiteIdByUrl``` can be used to get the site id for the given url
 
 ```php
     /**
