@@ -224,7 +224,7 @@ To perform all other GA queries use  ```performQuery```.  [Google's Core Reporti
     public function performQuery($startDate, $endDate, $metrics, $others = array())
 ```    
 
-###Convenience methods
+##Convenience methods
 ```getSiteIdByUrl```can be used to get the site id for the given url
 
 ```
