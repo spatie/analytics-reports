@@ -210,7 +210,7 @@ If there are  more used browsers than the number specified in maxResults, then a
 ```
 
 ###All other Google Analytics Queries
-To perform all other GA queries the ```performQuery```-method can be used.
+To perform all other GA queries use  ```performQuery```.  [Google's Core Reporting API](https://developers.google.com/analytics/devguides/reporting/core/v3/common-queries) provides more information on on which metrics and dimensions might be used. 
 ```
     /**
      * Call the query method on the autenthicated client
@@ -236,7 +236,4 @@ To perform all other GA queries the ```performQuery```-method can be used.
      * @return string
      */
     public function getSiteIdByUrl($url)
-``            
-    
-                 
-
+```           
