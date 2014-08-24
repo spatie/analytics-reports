@@ -231,7 +231,7 @@ To perform all other GA queries use  ```performQuery```.  [Google's Core Reporti
 ##Convenience methods
 ```getSiteIdByUrl```can be used to get the site id for the given url
 
-```
+```php
     /**
      * Returns the site id (ga:xxxxxxx) for the given url
      *
