@@ -1,9 +1,10 @@
 <?php namespace Spatie\AnalyticsReports;
 
-use Carbon\Carbon;
-use Illuminate\Support\Collection;
-use Cache;
 use Thujohn\Analytics\Analytics;
+use Illuminate\Support\Collection;
+use Carbon\Carbon;
+use Cache;
+
 
 /**
  * Retrieve data from Google Analytics
@@ -42,7 +43,7 @@ class AnalyticsReports {
      * Get the amount of visitors and pageviews
      *
      * @param int $numberOfDays
-     * @param string $groupBy
+     * @param string $groupBy Possible values: date, yearMonth
      * @return Collection
      */
     public function getVisitorsAndPageViews($numberOfDays = 365, $groupBy = 'date')
@@ -56,7 +57,7 @@ class AnalyticsReports {
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
-     * @param string $groupBy
+     * @param string $groupBy  Possible values: date, yearMonth
      * @return Collection
      */
     public function getVisitorsAndPageViewsForPeriod($startDate, $endDate, $groupBy = 'date')
@@ -230,7 +231,7 @@ class AnalyticsReports {
      */
     public function getSiteIdByUrl($url)
     {
-         return $this->client->getSiteIdByUrl($url);
+        return $this->client->getSiteIdByUrl($url);
     }
 
 
@@ -243,7 +244,7 @@ class AnalyticsReports {
      * @param array $others
      * @return mixed
      */
-    private function performQuery($startDate, $endDate, $metrics, $others = array())
+    public function performQuery($startDate, $endDate, $metrics, $others = array())
     {
         $cacheName = $this->determineCacheName(func_get_args());
 
@@ -263,6 +264,16 @@ class AnalyticsReports {
 
         return $answer;
 
+    }
+
+    /**
+     * Return true if this site is configured to use Google Analytics
+     *
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return ! $this->siteId == '';
     }
 
     /**
@@ -289,15 +300,7 @@ class AnalyticsReports {
         return [$startDate, $endDate];
     }
 
-    /**
-     * Return true if this site is configured to use Google Analytics
-     *
-     * @return bool
-     */
-    public function isEnabled()
-    {
-        return ! $this->siteId == '';
-    }
+
 
     /**
      * Determine if request to Google should be cached
