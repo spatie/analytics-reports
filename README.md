@@ -28,7 +28,7 @@ You must install this service provider.
 
 'providers' => [
     '...',
-    'Spatie\AnalyticsReports\\AnalyticsReportsServiceProvider'
+    'Spatie\AnalyticsReports\AnalyticsReportsServiceProvider'
 ];
 ```
 
