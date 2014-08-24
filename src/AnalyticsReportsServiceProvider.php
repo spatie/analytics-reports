@@ -28,10 +28,10 @@ class AnalyticsReportsServiceProvider extends ServiceProvider {
     public function register()
     {
 
-        $this->app->bindShared('googleanalyticsreports', function($app)
+        $this->app->bindShared('analytics-reports', function($app)
         {
             $client = $app->make('analytics');
-            $analyticsApi = new AnalyticsReports($client, $app['config']->get('analyticsReports::siteId'), $app['config']->get('analyticsReports::cacheLifetime'));
+            $analyticsApi = new AnalyticsReports($client, $app['config']->get('analytics-reports::siteId'), $app['config']->get('analytics-reports::cacheLifetime'));
             return $analyticsApi;
         });
     }
@@ -44,7 +44,7 @@ class AnalyticsReportsServiceProvider extends ServiceProvider {
 
     public function provides()
     {
-        return ['googleanalyticsreports'];
+        return ['analytics-reports'];
     }
 
 }
