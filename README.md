@@ -94,4 +94,149 @@ Here's another example to get the 20 most visited pages of the last 365 days
 */
 $analyticsData = AnalyticsReports::getMostVisitedPages(365, 20)
 ```
+## Provided methods
+
+###Visitors and Pageviews
+```
+    /**
+     * Get the amount of visitors and pageviews
+     *
+     * @param int $numberOfDays
+     * @param string $groupBy Possible values: date, yearMonth
+     * @return Collection
+     */
+    public function getVisitorsAndPageViews($numberOfDays = 365, $groupBy = 'date')
+
+    /**
+     * Get the amount of visitors and pageviews for the given period
+     *
+     * @param \DateTime $startDate
+     * @param \DateTime $endDate
+     * @param string $groupBy Possible values: date, yearMonth
+     * @return Collection
+     */
+    public function getVisitorsAndPageViewsForPeriod($startDate, $endDate, $groupBy = 'date')
+```    
+
+###Keywords
+```
+   /**
+     * Get the top keywords
+     *
+     * @param int $numberOfDays
+     * @param int $maxResults
+     * @return Collection
+     */
+    public function getTopKeywords($numberOfDays = 365, $maxResults = 30)
+
+    /**
+     * Get the top keywords for the given period
+     *
+     * @param \DateTime $startDate
+     * @param \DateTime $endDate
+     * @param int $maxResults
+     * @return Collection
+     */
+    public function getTopKeyWordsForPeriod($startDate, $endDate, $maxResults = 30)
+```
+
+###Referrers
+```
+    /**
+     * Get the top referrers
+     *
+     * @param int $numberOfDays
+     * @param int $maxResults
+     * @return Collection
+     */
+    public function getTopReferrers($numberOfDays = 365, $maxResults = 20)
+
+    /**
+     * Get the top referrers for the given period
+     *
+     * @param \DateTime $startDate
+     * @param \DateTime $endDate
+     * @param $maxResults
+     * @return Collection
+     */
+    public function getTopReferrersForPeriod($startDate, $endDate, $maxResults)
+``` 
+
+###Browsers
+
+If there are  more used browsers than the number specified in maxResults, then a new resultrow with browser-name "other" will be appended with a sum of all the remaining browsers.
+
+```
+    /**
+     * Get the top browsers
+     *
+     * @param int $numberOfDays
+     * @param int $maxResults
+     * @return Collection
+     */
+    public function getTopBrowsers($numberOfDays = 365, $maxResults = 6)
+    
+    /**
+     * Get the top browsers for the given period
+     *
+     * @param \DateTime $startDate
+     * @param \DateTime $endDate
+     * @param $maxResults
+     * @return Collection
+     */
+    public function getTopBrowsersForPeriod($startDate, $endDate, $maxResults) 
+```     
+
+###Most visited pages
+```
+    /**
+     * Get the most visited pages
+     *
+     * @param int $numberOfDays
+     * @param int $maxResults
+     * @return Collection
+     */
+    public function getMostVisitedPages($numberOfDays = 365, $maxResults = 20)
+    
+    /**
+     * Get the most visited pages for the given period
+     *
+     * @param \DateTime $startDate
+     * @param \DateTime $endDate
+     * @param int $maxResults
+     * @return Collection
+     */
+    public function getMostVisitedPagesForPeriod($startDate, $endDate, $maxResults = 20)
+```
+
+###All other Google Analytics Queries
+To perform all other GA queries the ```performQuery```-method can be used.
+```
+    /**
+     * Call the query method on the autenthicated client
+     *
+     * @param \DateTime $startDate
+     * @param \DateTime $endDate
+     * @param $metrics
+     * @param array $others
+     * @return mixed
+     */
+    public function performQuery($startDate, $endDate, $metrics, $others = array())
+```    
+
+###Convenience methods
+```getSiteIdByUrl```can be used to get the site id for the given url
+
+```
+    /**
+     * Returns the site id (ga:xxxxxxx) for the given url
+     *
+     * @param $url
+     * @throws \Exception
+     * @return string
+     */
+    public function getSiteIdByUrl($url)
+``            
+    
+                 
 
