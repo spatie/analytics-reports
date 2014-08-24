@@ -68,7 +68,7 @@ In the config file you can specify two values:
 - siteId: the Google site id, something in the form of ga:xxxxxxxx
 - cacheLifeTime: the amount of minutes the Google API responses will be cached. If you set this value to zero, the responses won't be cached at all.
 
-Internally this package uses [thujohn/analytics-l4](https://github.com/thujohn/analytics-l4) to authenticate with Google. So in order to use this package you must also follow [their installation instructions](https://github.com/thujohn/analytics-l4#installation)
+Internally this package uses [thujohn/analytics-l4](https://github.com/thujohn/analytics-l4) to authenticate with Google. So in order to use this package you must also follow [their installation instructions](https://github.com/thujohn/analytics-l4#installation).
 
 
 
