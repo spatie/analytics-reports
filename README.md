@@ -82,7 +82,7 @@ When the installation is done you can easily retrieve Analytics data
 Here is an example to retrieve visitors and pageview data for the last seven days.
 ```php
 /*
-* $analyticsData now contains a Collection with 3 columns: "date", "visitors" and "pageviews"
+* $analyticsData now contains a Collection with 3 columns: "date", "visitors" and "pageViews"
 */
 $analyticsData = AnalyticsReports::getVisitorsAndPageViews(7)
 ```
@@ -97,6 +97,7 @@ $analyticsData = AnalyticsReports::getMostVisitedPages(365, 20)
 ## Provided methods
 
 ###Visitors and Pageviews
+These methods return a Collection with columns "date", "vistors" and "pageViews". When grouping by yearMonth, the first column will be called "yearMonth".
 ```
     /**
      * Get the amount of visitors and pageviews
