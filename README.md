@@ -120,6 +120,7 @@ These methods return a Collection with columns "date", "vistors" and "pageViews"
 ```    
 
 ###Keywords
+These methods return a Collection with columns "keyword" and "sessions".
 ```
    /**
      * Get the top keywords
@@ -142,6 +143,7 @@ These methods return a Collection with columns "date", "vistors" and "pageViews"
 ```
 
 ###Referrers
+These methods return a Collection with columns "url" and "pageViews".
 ```
     /**
      * Get the top referrers
@@ -164,6 +166,7 @@ These methods return a Collection with columns "date", "vistors" and "pageViews"
 ``` 
 
 ###Browsers
+These methods return a Collection with columns "browser" and "sessions".
 
 If there are  more used browsers than the number specified in maxResults, then a new resultrow with browser-name "other" will be appended with a sum of all the remaining browsers.
 
@@ -189,6 +192,7 @@ If there are  more used browsers than the number specified in maxResults, then a
 ```     
 
 ###Most visited pages
+These methods return a Collection with columns "url" and "pageViews".
 ```
     /**
      * Get the most visited pages
