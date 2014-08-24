@@ -11,7 +11,15 @@ class AnalyticsReportsServiceProvider extends ServiceProvider {
      */
     protected $defer = true;
 
-
+    /**
+     * Bootstrap the application events.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->package('spatie/analytics-reports');
+    }
     /**
      * Register the service provider.
      *
@@ -23,7 +31,7 @@ class AnalyticsReportsServiceProvider extends ServiceProvider {
         $this->app->bindShared('googleanalyticsreports', function($app)
         {
             $client = $app->make('analytics');
-            $analyticsApi = new AnalyticsReports($client, Config::get('analyticsReports.siteId'), Config::get('analyticsReports.cacheLifetime'));
+            $analyticsApi = new AnalyticsReports($client, $app['config']->get('analyticsReports::siteId'), $app['config']->get('analyticsReports::cacheLifetime'));
             return $analyticsApi;
         });
     }
