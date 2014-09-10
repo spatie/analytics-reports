@@ -40,7 +40,7 @@ This package also comes with a facade, which provides an easy way to call the th
 
 'aliases' => array(
 	...
-	'AnalyticsReports' => 'Spatie\AnalyticsReports\Facades\AnalyticsReportsFacade',
+	'AnalyticsReports' => 'Spatie\AnalyticsReports\AnalyticsReportsFacade',
 )
 ```
 
