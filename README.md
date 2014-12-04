@@ -63,6 +63,11 @@ php artisan config:publish spatie/analytics-reports
 ```
 After the config file has been published you'll manually have to move it to your app's config-folder. (Hopefully this step won't be necessary in a next version)
 
+To move the config file copy the config.php file from 
+
+/app/config/packages/spatie/analytics-reports/
+
+and paste it to your /app/config folder and rename it to analyticsReports.php
 
 In the config file you can specify two values:
 - siteId: the Google site id, something in the form of ga:xxxxxxxx
