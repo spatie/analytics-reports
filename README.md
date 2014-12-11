@@ -11,12 +11,8 @@ This is an opinionated Laravel 4 package to retrieve Google Analytics data.
 
 This package can be installed through Composer.
 
-```js
-{
-    "require": {
-		"spatie/analytics-reports": "dev-master"
-	}
-}
+```
+composer require spatie/analytics-reports
 ```
 
 You must install this service provider.
@@ -49,7 +45,7 @@ Although the composer.json of this package specifies that "google/apiclient" AND
 {
     "require": {
     ...
-        "google/apiclient" : "1.0.*@beta",
+        "google/apiclient" : "1.1.*",
         "thujohn/analytics": "dev-master",
 	...
 	}
