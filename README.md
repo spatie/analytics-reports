@@ -1,6 +1,7 @@
 Retrieve data from Google Analytics
 =================
 [![Latest Stable Version](https://poser.pugx.org/spatie/analytics-reports/version.png)](https://packagist.org/packages/spatie/analytics-reports)
+[![Total Downloads](https://poser.pugx.org/spatie/analytics-reports/downloads.svg)](https://packagist.org/packages/spatie/analytics-reports)
 [![License](https://poser.pugx.org/spatie/analytics-reports/license.png)](https://packagist.org/packages/spatie/analytics-reports)
 
 This is an opinionated Laravel 4 package to retrieve Google Analytics data.
