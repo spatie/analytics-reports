@@ -254,7 +254,7 @@ class AnalyticsReports {
         }
         else
         {
-            $answer = $this->client->query($this->siteId,  $startDate->format('Y-m-d'), $endDate->format('Y-m-d'), $metrics, $others);
+            $answer = $this->client->query($this->siteId,  (is_object($startDate) ? $startDate->format('Y-m-d') : $startDate), (is_object($endDate) ? $endDate->format('Y-m-d') : $endDate), $metrics, $others);
             if ($this->useCache())
             {
                 Cache::put($cacheName, $answer, $this->cacheLifeTimeInMinutes);
