@@ -6,11 +6,13 @@ Retrieve data from Google Analytics
 
 This is an opinionated Laravel 4 package to retrieve Google Analytics data.
 
+We're currently working on a Laravel 5 compatibilty. ETA: mid April 2015
+
 
 
 ## Installation
 
-This package can be installed through Composer.
+This package can be installed through Composer. 
 
 ```
 composer require spatie/analytics-reports
