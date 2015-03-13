@@ -260,12 +260,14 @@ class AnalyticsReports
      */
     public function performQuery($startDate, $endDate, $metrics, $others = array())
     {
-        $cacheName = $this->determineCacheName(func_get_args());
+        $startDate = $startDate->format('Y-m-d');
+        $endDate = $endDate->format('Y-m-d');
+        $cacheName = $this->determineCacheName(array($startDate, $endDate, $metrics, $others));  
 
         if ($this->useCache() AND Cache::has($cacheName)) {
             $answer = Cache::get($cacheName);
         } else {
-            $answer = $this->client->query($this->siteId, $startDate->format('Y-m-d'), $endDate->format('Y-m-d'), $metrics, $others);
+            $answer = $this->client->query($this->siteId, $startDate, $endDate, $metrics, $others);
             if ($this->useCache()) {
                 Cache::put($cacheName, $answer, $this->cacheLifeTimeInMinutes);
             }
