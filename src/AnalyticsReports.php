@@ -1,10 +1,9 @@
 <?php namespace Spatie\AnalyticsReports;
 
-use Thujohn\Analytics\Analytics;
-use Illuminate\Support\Collection;
 use Carbon\Carbon;
-use Cache;
-
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Collection;
+use Thujohn\Analytics\Analytics;
 
 /**
  * Retrieve data from Google Analytics
@@ -102,7 +101,7 @@ class AnalyticsReports
         if (is_null($answer->rows)) {
             return new Collection([]);
         }
-        
+
         foreach ($answer->rows as $pageRow) {
             $keywordData[] = ['keyword' => $pageRow[0], 'sessions' => $pageRow[1]];
         }
@@ -140,7 +139,7 @@ class AnalyticsReports
         if (is_null($answer->rows)) {
             return new Collection([]);
         }
-        
+
         foreach ($answer->rows as $pageRow) {
             $referrerData[] = ['url' => $pageRow[0], 'pageViews' => $pageRow[1]];
         }
@@ -178,7 +177,7 @@ class AnalyticsReports
         if (is_null($answer->rows)) {
             return new Collection([]);
         }
-        
+
         foreach ($answer->rows as $browserRow) {
             $browserData[] = ['browser' => $browserRow[0], 'sessions' => $browserRow[1]];
         }
@@ -194,7 +193,7 @@ class AnalyticsReports
 
         return $browserCollection;
     }
-    
+
     /**
      * Get the most visited pages
      *
@@ -262,7 +261,7 @@ class AnalyticsReports
     {
         $startDate = $startDate->format('Y-m-d');
         $endDate = $endDate->format('Y-m-d');
-        $cacheName = $this->determineCacheName(array($startDate, $endDate, $metrics, $others));  
+        $cacheName = $this->determineCacheName(array($startDate, $endDate, $metrics, $others));
 
         if ($this->useCache() AND Cache::has($cacheName)) {
             $answer = Cache::get($cacheName);
