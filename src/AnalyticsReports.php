@@ -1,16 +1,16 @@
-<?php namespace Spatie\AnalyticsReports;
+<?php
 
-use Thujohn\Analytics\Analytics;
-use Illuminate\Support\Collection;
-use Carbon\Carbon;
+namespace Spatie\AnalyticsReports;
+
 use Cache;
-
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
+use Thujohn\Analytics\Analytics;
 
 /**
- * Retrieve data from Google Analytics
+ * Retrieve data from Google Analytics.
  *
  * Class Analytics
- * @package Spatie\Services\Analytics
  */
 class AnalyticsReports
 {
@@ -28,9 +28,9 @@ class AnalyticsReports
     protected $cacheLifeTimeInMinutes;
 
     /**
-     * @param Analytics $client An already authenticated client
-     * @param string $siteId Should look something like ga:xxxxxxxxx
-     * @param int $cacheLifeTimeInMinutes
+     * @param Analytics $client                 An already authenticated client
+     * @param string    $siteId                 Should look something like ga:xxxxxxxxx
+     * @param int       $cacheLifeTimeInMinutes
      */
     public function __construct(Analytics $client, $siteId = '', $cacheLifeTimeInMinutes = 0)
     {
@@ -40,30 +40,33 @@ class AnalyticsReports
     }
 
     /**
-     * Get the amount of visitors and pageviews
+     * Get the amount of visitors and pageviews.
      *
-     * @param int $numberOfDays
-     * @param string $groupBy Possible values: date, yearMonth
+     * @param int    $numberOfDays
+     * @param string $groupBy      Possible values: date, yearMonth
+     *
      * @return Collection
      */
     public function getVisitorsAndPageViews($numberOfDays = 365, $groupBy = 'date')
     {
         list($startDate, $endDate) = $this->calculateNumberOfDays($numberOfDays);
+
         return $this->getVisitorsAndPageViewsForPeriod($startDate, $endDate, $groupBy);
     }
 
     /**
-     * Get the amount of visitors and pageviews for the given period
+     * Get the amount of visitors and pageviews for the given period.
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
-     * @param string $groupBy Possible values: date, yearMonth
+     * @param string    $groupBy   Possible values: date, yearMonth
+     *
      * @return Collection
      */
     public function getVisitorsAndPageViewsForPeriod($startDate, $endDate, $groupBy = 'date')
     {
         $visitorData = [];
-        $answer = $this->performQuery($startDate, $endDate, 'ga:visits,ga:pageviews', ['dimensions' => 'ga:' . $groupBy]);
+        $answer = $this->performQuery($startDate, $endDate, 'ga:visits,ga:pageviews', ['dimensions' => 'ga:'.$groupBy]);
 
         foreach ($answer->rows as $dateRow) {
             $visitorData[] = [$groupBy => Carbon::createFromFormat(($groupBy == 'yearMonth' ? 'Ym' : 'Ymd'), $dateRow[0]), 'visitors' => $dateRow[1], 'pageViews' => $dateRow[2]];
@@ -73,24 +76,27 @@ class AnalyticsReports
     }
 
     /**
-     * Get the top keywords
+     * Get the top keywords.
      *
      * @param int $numberOfDays
      * @param int $maxResults
+     *
      * @return Collection
      */
     public function getTopKeywords($numberOfDays = 365, $maxResults = 30)
     {
         list($startDate, $endDate) = $this->calculateNumberOfDays($numberOfDays);
+
         return $this->getTopKeyWordsForPeriod($startDate, $endDate, $maxResults);
     }
 
     /**
-     * Get the top keywords for the given period
+     * Get the top keywords for the given period.
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
-     * @param int $maxResults
+     * @param int       $maxResults
+     *
      * @return Collection
      */
     public function getTopKeyWordsForPeriod($startDate, $endDate, $maxResults = 30)
@@ -102,7 +108,7 @@ class AnalyticsReports
         if (is_null($answer->rows)) {
             return new Collection([]);
         }
-        
+
         foreach ($answer->rows as $pageRow) {
             $keywordData[] = ['keyword' => $pageRow[0], 'sessions' => $pageRow[1]];
         }
@@ -111,24 +117,27 @@ class AnalyticsReports
     }
 
     /**
-     * Get the top referrers
+     * Get the top referrers.
      *
      * @param int $numberOfDays
      * @param int $maxResults
+     *
      * @return Collection
      */
     public function getTopReferrers($numberOfDays = 365, $maxResults = 20)
     {
         list($startDate, $endDate) = $this->calculateNumberOfDays($numberOfDays);
+
         return $this->getTopReferrersForPeriod($startDate, $endDate, $maxResults);
     }
 
     /**
-     * Get the top referrers for the given period
+     * Get the top referrers for the given period.
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
      * @param $maxResults
+     *
      * @return Collection
      */
     public function getTopReferrersForPeriod($startDate, $endDate, $maxResults)
@@ -140,7 +149,7 @@ class AnalyticsReports
         if (is_null($answer->rows)) {
             return new Collection([]);
         }
-        
+
         foreach ($answer->rows as $pageRow) {
             $referrerData[] = ['url' => $pageRow[0], 'pageViews' => $pageRow[1]];
         }
@@ -148,26 +157,28 @@ class AnalyticsReports
         return new Collection($referrerData);
     }
 
-
     /**
-     * Get the top browsers
+     * Get the top browsers.
      *
      * @param int $numberOfDays
      * @param int $maxResults
+     *
      * @return Collection
      */
     public function getTopBrowsers($numberOfDays = 365, $maxResults = 6)
     {
         list($startDate, $endDate) = $this->calculateNumberOfDays($numberOfDays);
+
         return $this->getTopBrowsersForPeriod($startDate, $endDate, $maxResults);
     }
 
     /**
-     * Get the top browsers for the given period
+     * Get the top browsers for the given period.
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
      * @param $maxResults
+     *
      * @return Collection
      */
     public function getTopBrowsersForPeriod($startDate, $endDate, $maxResults)
@@ -178,7 +189,7 @@ class AnalyticsReports
         if (is_null($answer->rows)) {
             return new Collection([]);
         }
-        
+
         foreach ($answer->rows as $browserRow) {
             $browserData[] = ['browser' => $browserRow[0], 'sessions' => $browserRow[1]];
         }
@@ -194,26 +205,29 @@ class AnalyticsReports
 
         return $browserCollection;
     }
-    
+
     /**
-     * Get the most visited pages
+     * Get the most visited pages.
      *
      * @param int $numberOfDays
      * @param int $maxResults
+     *
      * @return Collection
      */
     public function getMostVisitedPages($numberOfDays = 365, $maxResults = 20)
     {
         list($startDate, $endDate) = $this->calculateNumberOfDays($numberOfDays);
+
         return $this->getMostVisitedPagesForPeriod($startDate, $endDate, $maxResults);
     }
 
     /**
-     * Get the most visited pages for the given period
+     * Get the most visited pages for the given period.
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
-     * @param int $maxResults
+     * @param int       $maxResults
+     *
      * @return Collection
      */
     public function getMostVisitedPagesForPeriod($startDate, $endDate, $maxResults = 20)
@@ -222,11 +236,9 @@ class AnalyticsReports
 
         $answer = $this->performQuery($startDate, $endDate, 'ga:pageviews', ['dimensions' => 'ga:pagePath', 'sort' => '-ga:pageviews', 'max-results' => $maxResults]);
 
-
         if (is_null($answer->rows)) {
             return new Collection([]);
         }
-
 
         foreach ($answer->rows as $pageRow) {
             $pagesData[] = ['url' => $pageRow[0], 'pageViews' => $pageRow[1]];
@@ -235,12 +247,13 @@ class AnalyticsReports
         return new Collection($pagesData);
     }
 
-
     /**
-     * Returns the site id (ga:xxxxxxx) for the given url
+     * Returns the site id (ga:xxxxxxx) for the given url.
      *
      * @param $url
+     *
      * @throws \Exception
+     *
      * @return string
      */
     public function getSiteIdByUrl($url)
@@ -248,37 +261,36 @@ class AnalyticsReports
         return $this->client->getSiteIdByUrl($url);
     }
 
-
     /**
-     * Call the query method on the autenthicated client
+     * Call the query method on the autenthicated client.
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
      * @param $metrics
-     * @param array $others
+     * @param array     $others
+     *
      * @return mixed
      */
-    public function performQuery($startDate, $endDate, $metrics, $others = array())
+    public function performQuery($startDate, $endDate, $metrics, $others = [])
     {
         $startDate = $startDate->format('Y-m-d');
         $endDate = $endDate->format('Y-m-d');
-        $cacheName = $this->determineCacheName(array($startDate, $endDate, $metrics, $others));  
+        $cacheName = $this->determineCacheName([$startDate, $endDate, $metrics, $others]);
 
-        if ($this->useCache() AND Cache::has($cacheName)) {
+        if ($this->useCache() and Cache::has($cacheName)) {
             $answer = Cache::get($cacheName);
         } else {
             $answer = $this->client->query($this->siteId, $startDate, $endDate, $metrics, $others);
             if ($this->useCache()) {
                 Cache::put($cacheName, $answer, $this->cacheLifeTimeInMinutes);
             }
-
         }
 
         return $answer;
     }
 
     /**
-     * Return true if this site is configured to use Google Analytics
+     * Return true if this site is configured to use Google Analytics.
      *
      * @return bool
      */
@@ -288,32 +300,34 @@ class AnalyticsReports
     }
 
     /**
-     * Determine the cache name for the set of query properties given
+     * Determine the cache name for the set of query properties given.
      *
      * @param array $properties
+     *
      * @return string
      */
     private function determineCacheName(array $properties)
     {
-        return 'spatie.analyticsReports.' . md5(serialize($properties));
+        return 'spatie.analyticsReports.'.md5(serialize($properties));
     }
 
     /**
-     * Returns an array with the current date and the date minus the number of days specified
+     * Returns an array with the current date and the date minus the number of days specified.
      *
      * @param $numberOfDays
+     *
      * @return array
      */
     private function calculateNumberOfDays($numberOfDays)
     {
         $endDate = Carbon::today();
         $startDate = Carbon::today()->subDays($numberOfDays);
+
         return [$startDate, $endDate];
     }
 
-
     /**
-     * Determine if request to Google should be cached
+     * Determine if request to Google should be cached.
      *
      * @return bool
      */
@@ -321,5 +335,4 @@ class AnalyticsReports
     {
         return $this->cacheLifeTimeInMinutes > 0;
     }
-
 }

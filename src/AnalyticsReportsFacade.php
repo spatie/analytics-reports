@@ -1,9 +1,11 @@
-<?php namespace Spatie\AnalyticsReports;
+<?php
+
+namespace Spatie\AnalyticsReports;
 
 use Illuminate\Support\Facades\Facade;
 
-class AnalyticsReportsFacade extends Facade {
-
+class AnalyticsReportsFacade extends Facade
+{
     /**
      * Get the registered name of the component.
      *
@@ -13,5 +15,4 @@ class AnalyticsReportsFacade extends Facade {
     {
         return 'analytics-reports';
     }
-
 }
