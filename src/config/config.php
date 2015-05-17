@@ -1,4 +1,6 @@
-<?php return
+<?php
+
+return
 
     [
         /*
@@ -23,6 +25,6 @@
         |
         */
 
-        'cacheLifetime' => 60 * 24 * 2
+        'cacheLifetime' => 60 * 24 * 2,
 
     ];

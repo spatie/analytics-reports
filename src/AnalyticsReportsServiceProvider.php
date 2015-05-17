@@ -1,9 +1,12 @@
-<?php namespace Spatie\AnalyticsReports;
-use Illuminate\Support\ServiceProvider;
+<?php
+
+namespace Spatie\AnalyticsReports;
+
 use Config;
+use Illuminate\Support\ServiceProvider;
 
-class AnalyticsReportsServiceProvider extends ServiceProvider {
-
+class AnalyticsReportsServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -27,11 +30,10 @@ class AnalyticsReportsServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-
-        $this->app->bindShared('analytics-reports', function($app)
-        {
+        $this->app->bindShared('analytics-reports', function ($app) {
             $client = $app->make('analytics');
             $analyticsApi = new AnalyticsReports($client, $app['config']->get('analyticsReports.siteId'), $app['config']->get('analyticsReports.cacheLifetime'));
+
             return $analyticsApi;
         });
     }
@@ -41,10 +43,8 @@ class AnalyticsReportsServiceProvider extends ServiceProvider {
      *
      * @return array
      */
-
     public function provides()
     {
         return ['analytics-reports'];
     }
-
 }
