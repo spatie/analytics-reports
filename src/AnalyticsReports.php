@@ -4,6 +4,7 @@ namespace Spatie\AnalyticsReports;
 
 use Cache;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Collection;
 use Thujohn\Analytics\Analytics;
 
