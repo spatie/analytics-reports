@@ -7,7 +7,7 @@ Retrieve data from Google Analytics
 This is an opinionated Laravel 4 package to retrieve Google Analytics data. 
 
 ###Laravel 5
-If you're using Laravel 5, [take a look at this package](https://github.com/freekmurze/laravel-analytics).
+If you're using Laravel 5, [take a look at this package](https://github.com/spatie/laravel-analytics).
 
 
 ## Installation
