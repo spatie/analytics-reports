@@ -1,5 +1,6 @@
 {
     "name": "spatie/analytics-reports",
+    "homepage": "https://github.com/spatie/analytics-reports",
     "license": "MIT",
     "description": "An opinionated Laravel 4 package to retrieve Google Analytics data",
     "keywords":
