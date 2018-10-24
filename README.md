@@ -1,3 +1,7 @@
+🚨 **THIS PACKAGE HAS BEEN ABANDONED** 🚨
+
+We don't use this package anymore in our own projects and cannot justify the time needed to maintain it anymore. That's why we have chosen to abandon it. Feel free to fork our code and maintain your own copy.
+
 Retrieve data from Google Analytics
 =================
 [![Latest Stable Version](https://poser.pugx.org/spatie/analytics-reports/version.png)](https://packagist.org/packages/spatie/analytics-reports)
